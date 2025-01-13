@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const path = require('path');
 const app = express();
 const port = 5000;
 
@@ -13,7 +14,6 @@ console.log('Credenciais:', {
   user: process.env.EMAIL_USER,
   pass: process.env.EMAIL_PASS?.substring(0, 3) + '***'
 });
-
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -49,7 +49,7 @@ app.post('/send-email', async (req, res) => {
 
   try {
     const to = 'emmanu.zelda@gmail.com'
-    const subject = 'Detalhes da Seleção';
+    const subject = 'Date com a Manu :)';
     const text = `A data selecionada foi: ${dataSelecionada}\nTipo de date: ${selectedType}\nAnimação: ${animacao}`;
 
     await sendEmail(to, subject, text);
@@ -59,6 +59,12 @@ app.post('/send-email', async (req, res) => {
     console.error('Erro ao enviar o e-mail:', error);
     res.status(500).send('Erro ao enviar o e-mail');
   }
+});
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(port, () => {
