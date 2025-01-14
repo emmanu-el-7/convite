@@ -30,19 +30,19 @@ const useStyles = makeStyles((theme) => ({
   header: {
     textAlign: 'center',
   },
-  title: {
+  titulo: {
     fontSize: '3rem',
     fontWeight: '800',
     color: 'white',
   },
-  subtitle: {
+  legenda: {
     fontStyle: 'italic',
     paddingTop: '1rem',
     paddingBottom: '1rem',
     fontSize: '1.125rem',
     color: 'white',
   },
-  button: {
+  botao: {
     display: 'inline-block',
     fontWeight: 'bold',
     borderRadius: '9999px',
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
-  buttonText: {
+  textoBotao: {
     position: 'relative',
     zIndex: 10,
   },
@@ -106,12 +106,12 @@ function Index() {
         />
       </div>
       <header className={classes.header}>
-        <h1 className={classes.title}>Obaaaa!</h1>
-        <p className={classes.subtitle}>Não saia ainda :)</p>
+        <h1 className={classes.titulo}>Obaaaa!</h1>
+        <p className={classes.legenda}>Não saia ainda :)</p>
       </header>
       <Link to="/selecionar-data">
-        <button className={classes.button}>
-          <span className={classes.buttonText}>Siga em frente (づ ◕‿◕ )づ</span>
+        <button className={classes.botao}>
+          <span className={classes.textoBotao}>Siga em frente (づ ◕‿◕ )づ</span>
         </button>
       </Link>
     </div>

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "100vw",
     position: "relative",
   },
-  title: {
+  titulo: {
     fontSize: "3rem",
     fontWeight: 800,
     marginBottom: "3rem",
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
-  carouselItem: {
+  itemCarousel: {
     backgroundColor: "#600B04",
     flex: "none",
     width: "250px",
@@ -51,27 +51,27 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
     },
   },
-  selectedItem: {
+  itemEscolhido: {
     border: "2px solid #C21D36",
     backgroundColor: "#420C09",
   },
-  itemImage: {
+  itemImagem: {
     width: "100%",
     height: "200px",
     objectFit: "cover",
     borderRadius: "8px",
   },
-  itemName: {
+  itemNome: {
     marginTop: "1rem",
     fontSize: "1.25rem",
     fontWeight: "bold",
     textAlign: "center",
     color: "#C21D36",
   },
-  buttonWrapper: {
+  botaoWrapper: {
     paddingTop: "4rem",
   },
-  button: {
+  botao: {
     display: 'inline-block',
     fontWeight: 'bold',
     borderRadius: '9999px',
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
-  buttonText: {
+  textoBotao: {
     position: 'relative',
     zIndex: 10,
   },
@@ -114,49 +114,49 @@ const useStyles = makeStyles((theme) => ({
 
 const dates = [
   {
-    name: "Cinema",
+    nome: "Cinema",
     img: "https://i0.wp.com/borg.com/wp-content/uploads/2017/08/michael-jackson-thriller.jpg",
   },
   {
-    name: "Praia",
+    nome: "Praia",
     img: "https://i.ytimg.com/vi/J7RTqHNzjBo/maxresdefault.jpg",
   },
   {
-    name: "Piquenique",
+    nome: "Piquenique",
     img: "https://cdn.awsli.com.br/600x450/2009/2009139/produto/234643875/whatsapp-image-2023-09-23-at-10-16-51--1--59buwp3ddr.jpeg",
   },
 ];
 
 const Index = () => {
   const classes = useStyles();
-  const [selectedType, setSelectedType] = useState("");
+  const [tipoDate, setTipoDate] = useState("");
 
-  const handleSelection = (type) => {
-    localStorage.setItem("tipo de date", type);
-    setSelectedType(type);
+  const handleSelection = (date) => {
+    localStorage.setItem("tipo de date", date);
+    setTipoDate(date);
   };
 
   return (
     <div className={classes.root}>
-      <h2 className={classes.title}>Que tipo de date você prefere?</h2>
+      <h2 className={classes.titulo}>Que tipo de date você prefere?</h2>
       <div className={classes.carouselContainer}>
         {dates.map((date) => (
           <div
-            key={date.name}
-            className={`${classes.carouselItem} ${
-              selectedType === date.name ? classes.selectedItem : ""
+            key={date.nome}
+            className={`${classes.itemCarousel} ${
+              tipoDate === date.nome ? classes.itemEscolhido : ""
             }`}
-            onClick={() => handleSelection(date.name)}
+            onClick={() => handleSelection(date.nome)}
           >
-            <img src={date.img} alt={date.name} className={classes.itemImage} />
-            <div className={classes.itemName}>{date.name}</div>
+            <img src={date.img} alt={date.nome} className={classes.itemImagem} />
+            <div className={classes.itemNome}>{date.nome}</div>
           </div>
         ))}
       </div>
-      <div className={classes.buttonWrapper}>
+      <div className={classes.botaoWrapper}>
         <Link to="/animacao">
-          <button className={classes.button}>
-            <span className={classes.buttonText}>Bora lá!</span>
+          <button className={classes.botao}>
+            <span className={classes.textoBotao}>Bora lá!</span>
           </button>
         </Link>
       </div>

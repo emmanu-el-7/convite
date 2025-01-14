@@ -16,16 +16,16 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
+  titulo: {
     textAlign: 'center',
     fontSize: '3rem',
     fontWeight: '800',
     color: '#f646a5',
   },
-  buttonContainer: {
+  containerBotao: {
     padding: '4rem 0',
   },
-  yesButton: {
+  botaoSim: {
     display: 'inline-block',
     fontWeight: 'bold',
     borderRadius: '9999px',
@@ -60,11 +60,11 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
-  buttonText: {
+  textoBotao: {
     position: 'relative',
     zIndex: 10,
   },
-  noButton: {
+  botaoNao: {
     backgroundColor: '#242424',
     color: 'white',
     padding: '1rem 2rem',
@@ -83,12 +83,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomePage = () => {
-  const [noButtonStyle, setNoButtonStyle] = useState({});
+  const [botaoNaoEstilo, setBotaoNaoEstilo] = useState({});
 
   const handleNoHover = () => {
     const randomX = Math.floor(Math.random() * window.innerWidth);
     const randomY = Math.floor(Math.random() * window.innerHeight);
-    setNoButtonStyle({
+    setBotaoNaoEstilo({
       position: "absolute",
       left: `${randomX}px`,
       top: `${randomY}px`,
@@ -106,18 +106,18 @@ const HomePage = () => {
       <div>
         <img src={hamsterIMG} alt="Hamster Meme" className={classes.hamsterImage} />
       </div>
-      <h1 className={classes.title}>
+      <h1 className={classes.titulo}>
         Manu, aceita sair num date comigo?
       </h1>
-      <div className={classes.buttonContainer}>
+      <div className={classes.containerBotao}>
         <Link to="/happy-page">
-          <button className={classes.yesButton} onClick={startStorage}>
-            <span className={classes.buttonText}>Sim</span>
+          <button className={classes.botaoSim} onClick={startStorage}>
+            <span className={classes.textoBotao}>Sim</span>
           </button>
         </Link>
         <button
-          className={classes.noButton}
-          style={noButtonStyle}
+          className={classes.botaoNao}
+          style={botaoNaoEstilo}
           onMouseEnter={handleNoHover}
         >
           Não

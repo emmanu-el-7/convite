@@ -13,7 +13,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/happy-page" element={<HappyPage />} />
       <Route path="/selecionar-data" element={<DateTime />} />
-      <Route path="/select-date-type" element={<DateTypeSelection />} />
+      <Route path="/selecionar-tipo-date" element={<DateTypeSelection />} />
       <Route path="/animacao" element={<Animacao />} />
       <Route path="/post-message" element={<PostMessage />} />
       

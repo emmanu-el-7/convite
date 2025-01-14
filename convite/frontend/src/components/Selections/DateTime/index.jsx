@@ -22,12 +22,12 @@ const useStyles = makeStyles(() => ({
   header: {
     marginBottom: '1rem',
   },
-  title: {
+  titulo: {
     fontSize: '3rem',
     fontWeight: '800',
     color: '#9B2C2C',
   },
-  subtitle: {
+  legenda: {
     fontSize: '1.125rem',
     color: '#9B2C2C',
     fontWeight: '500'
@@ -42,7 +42,7 @@ const useStyles = makeStyles(() => ({
   buttonWrapper: {
     paddingTop: '1rem',
   },
-  button: {
+  botao: {
     display: 'inline-block',
     fontWeight: 'bold',
     borderRadius: '9999px',
@@ -77,11 +77,11 @@ const useStyles = makeStyles(() => ({
       width: '100%',
     },
   },
-  buttonText: {
+  textoBotao: {
     position: 'relative',
     zIndex: 10,
   },
-  error: {
+  erro: {
     color: 'red',
     fontSize: '0.875rem',
   }
@@ -98,14 +98,14 @@ const Index = () => {
   const handleSubmit = (values) => {
     localStorage.setItem("dataSelecionada", values.dataSelecionada);
 
-    navigate("/select-date-type");
+    navigate("/selecionar-tipo-date");
   };
 
   return (
     <div className={classes.root}>
       <header className={classes.header}>
-        <h1 className={classes.title}>Quando você está livre?</h1>
-        <p className={classes.subtitle}>Escolha a data que ficar melhor!!</p>
+        <h1 className={classes.titulo}>Quando você está livre?</h1>
+        <p className={classes.legenda}>Escolha a data que ficar melhor!!</p>
       </header>
 
       <Formik
@@ -123,16 +123,16 @@ const Index = () => {
                 required
                 onChange={(e) => setFieldValue("dataSelecionada", e.target.value)}
               />
-              <ErrorMessage name="dataSelecionada" component="div" className={classes.error} />
+              <ErrorMessage name="dataSelecionada" component="div" className={classes.erro} />
             </div>
 
             <div className={classes.buttonWrapper}>
               <button
-                className={classes.button}
+                className={classes.botao}
                 type="submit"
                 disabled={!isValid}
               >
-                <span className={classes.buttonText}>É essa a data! (＾-＾)</span>
+                <span className={classes.textoBotao}>É essa a data! (＾-＾)</span>
               </button>
             </div>
           </Form>

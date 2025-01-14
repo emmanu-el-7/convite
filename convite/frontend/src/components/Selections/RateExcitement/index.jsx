@@ -19,22 +19,22 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     paddingBottom: "4rem",
   },
-  image: {
+  imagem: {
     width: "250px",
     borderRadius: "36px",
     marginBottom: "2rem",
   },
-  title: {
+  titulo: {
     fontSize: "3rem",
     fontWeight: 800,
     marginBottom: "1rem",
     color: "#C21D36",
   },
-  animacaoText: {
+  animacaoTexto: {
     fontSize: "1.125rem",
     marginBottom: "0.5rem",
   },
-  animacaoValue: {
+  animacaoValor: {
     fontSize: "1.25rem",
     color: "#C21D36",
   },
@@ -64,10 +64,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#C21D36",
   },
-  buttonWrapper: {
+  botaoWrapper: {
     paddingTop: "2rem",
   },
-  button: {
+  botao: {
     fontWeight: "bold",
     borderRadius: "9999px",
     height: "50px",
@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
-  buttonText: {
+  textoBotao: {
     position: "relative",
     zIndex: 10,
   },
@@ -111,9 +111,9 @@ const Index = () => {
   const classes = useStyles();
   const [animacao, setAnimacao] = useState(5);
 
-  const handleSliderChange = (event, newValue) => {
-    localStorage.setItem("animação", newValue);
-    setAnimacao(newValue);
+  const handleSliderChange = (event, valor) => {
+    localStorage.setItem("animação", valor);
+    setAnimacao(valor);
   };
 
   return (
@@ -121,13 +121,13 @@ const Index = () => {
       <img
         src="https://i.chzbgr.com/full/9442666752/hEE1C0E84/cat"
         alt="excited cat"
-        className={classes.image}
+        className={classes.imagem}
       />
-      <h2 className={classes.title}>O quão animada você está?</h2>
+      <h2 className={classes.titulo}>O quão animada você está?</h2>
 
-      <span className={classes.animacaoText}>
+      <span className={classes.animacaoTexto}>
         Nível de animação:{" "}
-        <b className={classes.animacaoValue}>{animacao}</b>
+        <b className={classes.animacaoValor}>{animacao}</b>
       </span>
 
       <Slider
@@ -158,10 +158,10 @@ const Index = () => {
         <span className={classes.sliderLabel}>10</span>
       </div>
 
-      <div className={classes.buttonWrapper}>
+      <div className={classes.botaoWrapper}>
         <Link to="/post-message">
-          <button className={classes.button}>
-            <span className={classes.buttonText}>Hora de finalizar! (＾-＾)</span>
+          <button className={classes.botao}>
+            <span className={classes.textoBotao}>Hora de finalizar! (＾-＾)</span>
           </button>
         </Link>
       </div>

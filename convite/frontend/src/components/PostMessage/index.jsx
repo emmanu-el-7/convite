@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
+  titulo: {
     textAlign: 'center',
     fontSize: '3rem',
     fontWeight: '800',
     color: 'white',
   },
-  subtitle: {
+  legenda: {
     fontStyle: 'italic',
     paddingTop: '1rem',
     paddingBottom: '1rem',
@@ -39,17 +39,17 @@ const PostMessage = () => {
   const classes = useStyles();
 
   const dataSelecionada = localStorage.getItem("dataSelecionada");
-  const selectedType = localStorage.getItem("tipo de date");
+  const tipoDate = localStorage.getItem("tipo de date");
   const animacao = localStorage.getItem("animação");
 
-  const sendEmail = async () => {
+  const enviarEmail = async () => {
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
+      const response = await fetch("http://localhost:5000/enviar-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ dataSelecionada, selectedType, animacao }),
+        body: JSON.stringify({ dataSelecionada, tipoDate, animacao }),
       });
       const data = await response.json();
       console.log('Resposta do servidor:', data);
@@ -59,22 +59,22 @@ const PostMessage = () => {
   };
 
   useEffect(() => {
-    if (dataSelecionada && selectedType && animacao) {
-      sendEmail();
+    if (dataSelecionada && tipoDate && animacao) {
+      enviarEmail();
     }
-  }, [dataSelecionada, selectedType, animacao]);
+  }, [dataSelecionada, tipoDate, animacao]);
 
   return (
     <div className={classes.root}>
       <div>
         <img src={Sakuragi} alt="Sakuragi gif" className={classes.gif} />
       </div>
-      <h1 className={classes.title}>
+      <h1 className={classes.titulo}>
         {dataSelecionada && <p>Data escolhida: {dataSelecionada}</p>}
-        {selectedType && <p>Date preferido: {selectedType}</p>}
+        {tipoDate && <p>Date preferido: {tipoDate}</p>}
         {animacao && <p>Animação: {animacao}</p>}
       </h1>
-      <h2 className={classes.subtitle}>
+      <h2 className={classes.legenda}>
         Não vejo a hora!!
       </h2>
     </div>
